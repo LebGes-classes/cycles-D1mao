@@ -1,7 +1,7 @@
 import java.util.Scanner;
 // important note: if you want punctuation marks not to be taken into account when encoding, put a space between them and the words
 public class hometask2 {
-    public static void encoder(String str1) {
+    public static int K_finder(String str1) {
         String[] words = str1.split(" ");
         String last_str = "";
         for (String word : words){
@@ -10,7 +10,9 @@ public class hometask2 {
             }
         }
         int K = last_str.length();
-        System.out.println("K = "+K);
+        return K;
+    }    
+    public static String encoder(String str1, int K){    
         char[] chars = str1.toCharArray();
         for(int i = 0; i < str1.length(); i++){
             boolean Big = (chars[i]+"").equals((chars[i]+"").toUpperCase());
@@ -36,11 +38,14 @@ public class hometask2 {
             }
         }
         String ans = new String(chars);
-        System.out.println("Зашифрованная строка: " + ans);
+        return ans;    
     }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String str1 = scan.nextLine();
-        encoder(str1);
+        int K = K_finder(str1);
+        System.out.println("K = " + K);
+        String ans = encoder(str1, K);
+        System.out.println("Зашифрованная строка: " + ans);
     }
 }
